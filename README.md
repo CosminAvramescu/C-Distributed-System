@@ -1,5 +1,8 @@
 <!-- ABOUT THE PROJECT -->
 # ABOUT THE PROJECT
+
+<!-- Cluster -->
+# Cluster
 ![topology](https://i.imgur.com/6agX4dI.png)
 
 	Implemented vector computation in a distributed system using MPI.h and C.	
@@ -64,7 +67,7 @@
 ## Usage
 
 1. Run make command.
-2. Drag app executable from src to checker
+2. Drag app executable from src to checker folder
 3. Run the script ./checker.sh
 
 
