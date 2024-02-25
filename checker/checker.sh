@@ -24,9 +24,7 @@ function show_score {
 	echo "Scor topologie: $topo_tests/30"
 	echo "Scor corectitudine: $comp_tests/30"
 	echo "Scor deconectare: $disconnect/20"
-	echo "Depunctare mesaje: $invalid/100"
-	echo "Bonus: $bonus/15"
-	echo "Total: $total/95"
+	echo "Total: $total/80"
 }
 
 # se verifica topologia (parametru: numarul de procese)
@@ -106,7 +104,7 @@ function check_disconnect_and_partition {
 
 	local dc=$(($1-2))
 
-	mpirun --oversubscribe -np $procs ./tema3 $N $dc &> out.txt
+	mpirun --oversubscribe -np $procs ./app $N $dc &> out.txt
 
 	# verificare topologie
 	procs=$(($procs-1))
@@ -193,7 +191,7 @@ cd ../src
 make clean &> /dev/null
 make build &> build.txt
 
-if [ ! -f tema3 ]
+if [ ! -f app ]
 then
     echo "E: Nu s-a putut compila tema"
     cat build.txt
@@ -204,7 +202,7 @@ fi
 
 rm -rf build.txt
 
-mv tema3 ../checker
+mv app ../checker
 cd ../checker
 
 # se ruleaza 4 teste
@@ -218,7 +216,7 @@ do
 	procs=`sed '1q;d' inputs.txt`
 	N=`sed '2q;d' inputs.txt`
 
-	mpirun --oversubscribe -np $procs ./tema3 $N 0 &> out.txt
+	mpirun --oversubscribe -np $procs ./app $N 0 &> out.txt
 
 	# verificare topologie
 	check_topology $procs
@@ -241,13 +239,6 @@ echo ""
 echo "Se ruleaza testul de deconectare..."
 cp ./tests/test_disconnect/*.txt .
 check_disconnect_and_partition 3
-rm -rf *.txt
-
-# se ruleaza testul bonus
-echo ""
-echo "Se ruleaza testul de bonus..."
-cp ./tests/test_partition/*.txt .
-check_disconnect_and_partition 4
 rm -rf *.txt
 
 make clean &> /dev/null

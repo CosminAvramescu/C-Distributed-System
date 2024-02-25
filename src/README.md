@@ -5,14 +5,12 @@
 	Implemented OAuth between a server and a client using RPC and C++.	
 
 ---General aspects
-
         We have 4 coordinators (0, 1, 2 and 3), with no link between 0 and 1.
     First I make sure that all processes know the topology. Thus, all messages are sent 
     on the path 0->3->2->1->2->3->0. The information between the coordinators is transmitted 
     as in recursion - it comes to a point, then back on the same path.
 
 ---How each process finds the topology
-
     	    For the topology I used a matrix (vector of vectors). Basically, I have a matrix with 4 lines and
     variable number of columns depending on how many workers each coordinator has. For example, Coordinator 0 has workers
     on line 0 of the matrix (the first element on line 0 is the number of workers, then there are the id of the workers.
@@ -53,7 +51,7 @@
    sudo apt-get install openmpi-bin libopenmpi-dev
    (verify installation) mpicc -v
 
-   (#include <mpi.h> in code)
+   #include <mpi.h> in code
    ```
 
 
@@ -61,8 +59,8 @@
 ## Usage
 
 1. Run make command.
-2. Drag app executable from src to checker
-3. Run the script ./checker.sh
+2. Run ./app_server in a terminal and ./app_client in another terminal. 
+3. Run the script ./check.sh to test the app with the tests suite.
 
 
 <!-- CONTRIBUTING -->
