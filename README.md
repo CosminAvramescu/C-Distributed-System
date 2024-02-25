@@ -1,14 +1,12 @@
-![topology](https://i.imgur.com/6agX4dI.png)
-
 <!-- ABOUT THE PROJECT -->
 # ABOUT THE PROJECT
-![oauth](https://i.imgur.com/8YiiFGq.png)
+![topology](https://i.imgur.com/6agX4dI.png)
 
 	Implemented OAuth between a server and a client using RPC and C++.	
 
 ---General aspects
-    	    We have 4 coordinators (0, 1, 2 and 3), with no link between 0 and 1.
-    	    First I make sure that all processes know the topology. Thus, all messages are sent 
+        We have 4 coordinators (0, 1, 2 and 3), with no link between 0 and 1.
+    First I make sure that all processes know the topology. Thus, all messages are sent 
     on the path 0->3->2->1->2->3->0. The information between the coordinators is transmitted 
     as in recursion - it comes to a point, then back on the same path.
 
