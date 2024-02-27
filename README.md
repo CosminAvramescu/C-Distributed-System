@@ -29,7 +29,7 @@
     Coordinator 1 sends the complete matrix to its workers coordinator 2 sends the matrix to its 
     workers and so on until it reaches coordinator 0 and each worker displays the topology.
 
---- Vector computation by each worker (balanced splitting)
+--- Vector computation (balanced splitting for workers)
 
         Balanced share of number of calculations for each worker.
             loadPerWorker = no of vector elements / totalWorkers
