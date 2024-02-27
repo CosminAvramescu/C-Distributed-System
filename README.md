@@ -7,14 +7,14 @@
 
 	Implemented vector computation in a distributed system using MPI.h and C.	
 
----General aspects
+--- General aspects
 
         We have 4 coordinators (0, 1, 2 and 3), with no link between 0 and 1.
     First I make sure that all processes know the topology. Thus, all messages are sent on the path
     0->3->2->1->2->3->0. The information between the coordinators is transmitted as in recursion - 
     it comes to a point, then back on the same path.
 
----How each process finds the topology
+--- How each process finds the topology
 
         For the topology I used a matrix (vector of vectors). Basically, I have a matrix with 4 
     lines and variable number of columns depending on how many workers each coordinator has. For 
@@ -29,7 +29,8 @@
     Coordinator 1 sends the complete matrix to its workers coordinator 2 sends the matrix to its 
     workers and so on until it reaches coordinator 0 and each worker displays the topology.
 
----Vector computation by each worker (balanced splitting)
+--- Vector computation by each worker (balanced splitting)
+
         Balanced share of number of calculations for each worker.
             loadPerWorker = no of vector elements / totalWorkers
 
